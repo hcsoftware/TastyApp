@@ -1,0 +1,42 @@
+<resources>
+    <string name="app_name">TastyApp</string>
+
+    <!-- Recipe List Adapter Strings -->
+    <string name="recipe_list_calories">Calories : </string>
+    <string name="recipe_list_cooktime">CookTime : </string>
+    <string name="recipe_list_fibers">Fibers : </string>
+    <string name="recipe_list_no_data"> No Data </string>
+
+    <!-- Main Activity Strings -->
+    <string name="main_act_title">Tasty App. All the best recipes!</string>
+
+    <!-- Recipe Fragment Strings -->
+    <string name="recipe_frag_error_title">Loading Error</string>
+    <string name="recipe_frag_error_msg">There\'s been an error loading this recipe. Please try again later.</string>
+    <string name="recipe_frag_error_btn">OK</string>
+
+    <string name="recipe_frag_prep_time">Prep Time : </string>
+    <string name="recipe_frag_total_time">Total Time : </string>
+    <string name="recipe_frag_no_data">No Data </string>
+    <string name="recipe_frag_total_price">Total Price : </string>
+    <string name="recipe_frag_portion_price">Portion Price : </string>
+
+    <string name="recipe_frag_instruction">Cooking Instructions</string>
+
+    <!-- Search Fragment Strings -->
+    <string name="search_frag_error_title">Input error</string>
+    <string name="search_frag_error_msg_wrong">Please input only words from 1 to 15 chars."</string>
+    <string name="search_frag_error_msg_no_results">Your search has no results. Sorry!</string>
+    <string name="search_frag_error_btn">OK</string>
+
+    <string name="search_frag_top_hint">FOODTYPE</string>
+    <string name="search_frag_top_btn">SEARCH</string>
+    <string name="search_frag_top_cook_text">Select estimated cook time:</string>
+
+    <string name="search_frag_radio_opt_0">Under 15\'</string>
+    <string name="search_frag_radio_opt_1">Under 30\'</string>
+    <string name="search_frag_radio_opt_2">Under 45\'</string>
+    <string name="search_frag_radio_opt_3">No time.</string>
+
+
+</resources>

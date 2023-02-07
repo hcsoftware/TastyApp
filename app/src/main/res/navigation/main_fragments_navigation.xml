@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_fragments_navigation"
+    app:startDestination="@id/searchFragment">
+
+    <fragment
+        android:id="@+id/searchFragment"
+        android:name="com.xr6sfoftware.tastyapp.view.fragments.SearchFragment"
+        android:label="search_fragment"
+        tools:layout="@layout/search_fragment" />
+    <action
+        android:id="@+id/action_newsSearchFragment_to_newsDetailFragment"
+        app:destination="@id/recipeFragment" />
+
+        />
+
+        <fragment
+        android:id="@+id/recipeFragment"
+        android:label="recipe_fragment"
+        android:name="com.xr6sfoftware.tastyapp.view.fragments.RecipeFragment"
+        tools:layout="@layout/recipe_fragment" />
+
+
+    </navigation>
