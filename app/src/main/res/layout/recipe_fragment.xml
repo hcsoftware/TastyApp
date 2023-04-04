@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/orange_background"
-    tools:context=".view.fragments.RecipeFragment">
+    tools:context=".ui.main.fragments.RecipeFragment">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -139,7 +139,7 @@
 
     <!-- LOADING SCREEN-->
     <RelativeLayout
-        android:background="@color/black_light"
+        android:background="@color/orange_dark"
         android:id="@+id/recipe_fragment_loading"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

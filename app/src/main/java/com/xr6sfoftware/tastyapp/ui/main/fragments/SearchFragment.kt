@@ -1,4 +1,4 @@
-package com.xr6sfoftware.tastyapp.view.fragments
+package com.xr6sfoftware.tastyapp.ui.main.fragments
 
 import android.app.AlertDialog
 import android.os.Bundle
@@ -13,14 +13,17 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.xr6sfoftware.tastyapp.R
 import com.xr6sfoftware.tastyapp.databinding.SearchFragmentBinding
-import com.xr6sfoftware.tastyapp.network.model.Recipe
+import com.xr6sfoftware.tastyapp.model.Recipe
+import com.xr6sfoftware.tastyapp.ui.main.adapters.RecipeListAdapter
+import com.xr6sfoftware.tastyapp.ui.main.adapters.RecipeListAdapterClickListener
 import com.xr6sfoftware.tastyapp.utils.hideKeyboard
 import com.xr6sfoftware.tastyapp.utils.validateUserInput
-import com.xr6sfoftware.tastyapp.viewmodel.SearchViewModel
-import com.xr6sfoftware.tastyapp.view.adapters.RecipeListAdapter
-import com.xr6sfoftware.tastyapp.view.adapters.RecipeListAdapterClickListener
+import com.xr6sfoftware.tastyapp.viewmodels.SearchViewModel
 import dagger.hilt.android.AndroidEntryPoint
-import javax.inject.Inject
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.launch
 
 /**
 @author Hernán Carrera
@@ -77,12 +80,12 @@ class SearchFragment : Fragment(), RecipeListAdapterClickListener {
                 }
                 is SearchViewModel.UiSearchFragmentState.Error -> {
                     viewBinding.searchFragmentLoading.visibility = View.GONE
-
+                    showErrorDialog(it.error)
                 }
                 is SearchViewModel.UiSearchFragmentState.Recipes -> {
                     viewBinding.searchFragmentLoading.visibility = View.GONE
-                    if (it.recipeList.isNotEmpty()) {
-                        recipeListAdapter.updateDataOnView(it.recipeList)
+                    if (it.recipeList.count > 0) {
+                        recipeListAdapter.setData(it.recipeList.results)
                     } else {
                         showIncorrectInputMsg(resources.getString(R.string.search_frag_error_msg_no_results))
                     }
@@ -94,19 +97,27 @@ class SearchFragment : Fragment(), RecipeListAdapterClickListener {
 
     }
 
+    private fun showErrorDialog(error: String) {
+        val mBuilder = AlertDialog.Builder(requireContext())
+            .setTitle(resources.getString(R.string.search_frag_error_title))
+            .setMessage(error)
+            .setPositiveButton(resources.getString(R.string.search_frag_error_btn), null)
+            .show()
+        mBuilder.getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener {
+            mBuilder.dismiss()
+        }
+    }
+
     private fun setClickListeners() {
 
 
         viewBinding.searchFragmentSearchButton.setOnClickListener {
-
+            hideKeyboard()
             if (viewBinding.searchFragmentInputText.validateUserInput()) {
-
-                viewModel.getRecipeList(
+                viewModel.getRecipes(
                     viewBinding.searchFragmentInputText.text.toString(),
                     getCookTime()
                 )
-                hideKeyboard()
-
             } else {
                 showIncorrectInputMsg(resources.getString(R.string.search_frag_error_msg_wrong))
             }
