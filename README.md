@@ -15,8 +15,9 @@ Implements:<br></p>
 <li>Gson library to handle JSON objects</li>
 <li>Coil library to load Images. This library uses coroutines</li>
 <li>Dagger Hilt for dependency injection</li>
+<li>DiffUtil in RecyclerView</li>
 <li>Unit testing for user input validation method.</li>
-<li>Desing patterns like adapter, factory, singleton</li>
+<li>Desing patterns like repository, adapter, singleton</li>
 </ul>
 <p> In this project you migth find UI implements like:<p>
 <ul>
@@ -28,15 +29,14 @@ Implements:<br></p>
 This application has 2 fragments. One to list the search results, and one to show the recipe on detail.<br>
 The viewModels use Hilt Injection, and LiveData to comunicate events.
 App layers and classes: <br> 
- -> model. * dataclasses. This class holds the different data classes used in  api responses / app. <br> 
- -> network * ApiService. This class handles the api requests from the viewmodel and pass the parsed response through the callback.<br>
-            * Callback. This interface is used to get the result from the apiservice in the viewmodel.<br>
+ -> model. * dataclasses. This class holds the different data classes used in the app.<br> 
+ -> network * ApiService. This class handles the api requests from the repository through Coroutines.<br>
  -> Utils.  * Extensions. Holds some extensions functions, like hide keyboard from any context.<br>
             * InputValidator. A simple class to validate user input message.<br>
  -> Views  -> Adapters * Holds the listview adapters and their interface for click handling in the fragment.<br>
             * Holds the main activity and fragments.<br>
- ->  ViewModel -> * SearchViewModel. This viewModel provides:  -> the recipe list from the apiservice -<br>
-                * RecipeViewModel. Provides recipe in detail from the Api Service.<br>
+ -> Repositories -> RecipeRepository  * Handles the requests from the viewModel and connects with the ApiService.<br>
+ ->  ViewModel -> * The viewModels handles the data and provides the views.
                 
   Some ScreenShots: 
   <div>
