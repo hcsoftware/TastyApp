@@ -34,11 +34,10 @@
                 android:id="@+id/search_fragment_input_text"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="0dp"
-                android:layout_marginRight="10dp"
+                android:layout_marginStart="0dp"
+                android:layout_marginEnd="10dp"
                 android:layout_weight="0.6"
-                android:ems="10"
-                android:maxLines="15"
+                android:maxLength="15"
                 android:singleLine="true" />
 
             <Button

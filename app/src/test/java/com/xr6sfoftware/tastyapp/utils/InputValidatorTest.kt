@@ -1,10 +1,10 @@
 package com.xr6sfoftware.tastyapp.utils
 
-import org.junit.Assert.*
+import org.junit.Assert.assertFalse
+import org.junit.Assert.assertTrue
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.junit.runners.JUnit4
-import javax.xml.validation.Validator
 
 @RunWith(JUnit4::class)
 class InputValidatorTest {

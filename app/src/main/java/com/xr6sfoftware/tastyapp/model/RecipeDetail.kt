@@ -3,7 +3,10 @@ package com.xr6sfoftware.tastyapp.model
 import com.google.gson.Gson
 import com.google.gson.annotations.SerializedName
 
-
+/**
+ * Model for Recipe Detail as comes from Api Server.
+ * Function to parse Json to Recipe model.
+ */
 data class RecipeDetail (
     val price: Price,
     val name: String,

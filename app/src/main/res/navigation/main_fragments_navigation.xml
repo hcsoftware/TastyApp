@@ -9,18 +9,17 @@
         android:id="@+id/searchFragment"
         android:name="com.xr6sfoftware.tastyapp.ui.main.fragments.SearchFragment"
         android:label="search_fragment"
-        tools:layout="@layout/search_fragment" />
-    <action
-        android:id="@+id/action_newsSearchFragment_to_newsDetailFragment"
-        app:destination="@id/recipeFragment" />
+        tools:layout="@layout/search_fragment" >
+        <action
+            android:id="@+id/action_searchFragment_to_recipeFragment3"
+            app:destination="@id/recipeFragment" />
+    </fragment>
 
-        />
-
-        <fragment
-        android:id="@+id/recipeFragment"
-        android:label="recipe_fragment"
-        android:name="com.xr6sfoftware.tastyapp.ui.main.fragments.RecipeFragment"
-        tools:layout="@layout/recipe_fragment" />
+    <fragment
+    android:id="@+id/recipeFragment"
+    android:label="recipe_fragment"
+    android:name="com.xr6sfoftware.tastyapp.ui.main.fragments.RecipeFragment"
+    tools:layout="@layout/recipe_fragment" />
 
 
-    </navigation>
+</navigation>

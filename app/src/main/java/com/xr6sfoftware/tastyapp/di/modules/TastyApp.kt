@@ -7,5 +7,4 @@ import dagger.hilt.android.HiltAndroidApp
  * Necessary Module for Hilt Implementation.
  */
 @HiltAndroidApp
-class TastyApp : Application() {
-}
+class TastyApp : Application()

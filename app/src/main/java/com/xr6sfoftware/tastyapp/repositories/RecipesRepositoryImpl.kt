@@ -4,15 +4,13 @@ import com.xr6sfoftware.tastyapp.model.RecipeDetail
 import com.xr6sfoftware.tastyapp.model.RecipeList
 import com.xr6sfoftware.tastyapp.network.ApiService
 import com.xr6sfoftware.tastyapp.repositories.model.RepositoryStatus
-import dagger.Module
-import dagger.hilt.InstallIn
-import dagger.hilt.components.SingletonComponent
 import javax.inject.Inject
 
-@InstallIn(SingletonComponent::class)
-@Module
+/**
+ * Implements and defines the Repository Funs. Interacts with Api Service.
+ */
 class RecipesRepositoryImpl @Inject constructor(
-    private val apiService: ApiService
+   private val apiService: ApiService
 ) : RecipesRepository {
 
 
@@ -21,6 +19,7 @@ class RecipesRepositoryImpl @Inject constructor(
      *  @param foodType food or term to search
      *  @param cookTime String, use under_15_minutes, under_30_minutes, under_40_minutes or blank
      */
+
     override suspend fun getRecipesList(foodType: String, cookTime: String) : RepositoryStatus<RecipeList> {
 
         val apiResponse = apiService.getRecipesFromApi(foodType, cookTime)
@@ -30,6 +29,7 @@ class RecipesRepositoryImpl @Inject constructor(
             RepositoryStatus.Failed(apiResponse.error)
         }
 
+
     }
 
     /**
@@ -37,6 +37,7 @@ class RecipesRepositoryImpl @Inject constructor(
      *  @param recipeId Int value recipe id
      */
     override suspend fun getRecipe(recipeId: Int): RepositoryStatus<RecipeDetail> {
+
 
         val apiResponse = apiService.getRecipeFromApi(recipeId)
         return if (apiResponse.error.isNullOrBlank()) {

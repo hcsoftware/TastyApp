@@ -15,8 +15,9 @@ import com.xr6sfoftware.tastyapp.model.Recipe
 /**
  * Custom RecyclerView Adapter to show Recipe List in Search Fragment
  */
+
 class RecipeListAdapter (
-    private val clickListener: RecipeListAdapterClickListener,
+    private val clickListener: (Recipe) -> Unit,
     private val context : Context
     ): RecyclerView.Adapter<RecipeListAdapter.ViewHolder>(){
 
@@ -49,7 +50,7 @@ class RecipeListAdapter (
             else {context.getString(R.string.recipe_list_fibers) + recipe.nutrition.fiber.toString()}
 
         holder.itemView.setOnClickListener {
-            clickListener.onClick(recipe)
+            clickListener(recipe)
         }
 
     }
@@ -75,7 +76,6 @@ class RecipeListAdapter (
         val calories : TextView = v.findViewById(R.id.itemlist_calories)
         val fibers : TextView = v.findViewById(R.id.itemlist_fibers)
     }
-
 
     class RecipeListDiffUtil(
         private val oldList : List<Recipe>,

@@ -1,6 +1,8 @@
 package com.xr6sfoftware.tastyapp.network
 
 import android.content.Context
+import com.android.volley.DefaultRetryPolicy
+import com.android.volley.Request
 import com.android.volley.Response
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
@@ -29,10 +31,16 @@ class ApiService @Inject constructor(@ApplicationContext val context: Context) {
     private val recipeListUrl = NetworkConstants.URL_RECIPE_LIST
     private val recipeDetailUrl = NetworkConstants.URL_RECIPE_DETAIL
 
+    companion object {
+        const val TIMEOUT = 10000
+        const val MAX_RETRIES = 1
+    }
+
     /**
      *  loads the recipes from the API service
      *  @param foodType food or term to search
      *  @param cookTime String, use under_15_minutes, under_30_minutes, under_40_minutes or blank
+     * @return ApiResponse with RecipeList object / Error msg
      */
     suspend fun getRecipesFromApi(foodType: String, cookTime: String) : ApiResponse<RecipeList> =
         suspendCoroutine { continuation  ->
@@ -57,12 +65,13 @@ class ApiService @Inject constructor(@ApplicationContext val context: Context) {
                     return headers
                 }
             }
-            requestQueue.add(req)
+            addToRequestQueue(req)
         }
 
     /**
      *  loads the recipe detail given an Id from the API service
      *  @param recipeId Int value recipe id
+     *  @return ApiResponse with RecipeDetail object / Error msg
      */
     suspend fun getRecipeFromApi(recipeId: Int): ApiResponse<RecipeDetail> =
         suspendCoroutine { continuation ->
@@ -87,7 +96,20 @@ class ApiService @Inject constructor(@ApplicationContext val context: Context) {
                     return headers
                 }
             }
-            requestQueue.add(req)
+            addToRequestQueue(req)
         }
+
+    /**
+     * Add retryPolicy to Request and adds to queue
+     * @param request Generic Volley Request
+     */
+    private fun <T> addToRequestQueue(request: Request<T>){
+        request.retryPolicy = DefaultRetryPolicy(
+            TIMEOUT,
+            MAX_RETRIES,
+            DefaultRetryPolicy.DEFAULT_BACKOFF_MULT
+        )
+        requestQueue.add(request)
+    }
 
 }

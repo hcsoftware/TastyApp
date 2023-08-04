@@ -1,6 +1,14 @@
 <resources>
     <string name="app_name">TastyApp</string>
 
+    <!-- Quit Dialog Strings -->
+    <string name="quit_dialog_header_title">Tasty App!</string>
+    <string name="quit_dialog_content_title">Are you sure you want to leave our kitchen?</string>
+    <string name="quit_dialog_content_btn_yes">YES</string>
+    <string name="quit_dialog_content_btn_no">NO</string>
+
+
+
     <!-- Recipe List Adapter Strings -->
     <string name="recipe_list_calories">Calories : </string>
     <string name="recipe_list_cooktime">CookTime : </string>

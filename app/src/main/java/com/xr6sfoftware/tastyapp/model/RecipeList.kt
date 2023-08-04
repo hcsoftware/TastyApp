@@ -4,6 +4,10 @@ import com.google.gson.Gson
 import com.google.gson.annotations.SerializedName
 import java.io.Serializable
 
+/**
+ * Model for Recipe list as comes from Api Server.
+ * Function to parse Json to RecipeList model.
+ */
 data class RecipeList (
     val count: Int,
     val results : ArrayList<Recipe>

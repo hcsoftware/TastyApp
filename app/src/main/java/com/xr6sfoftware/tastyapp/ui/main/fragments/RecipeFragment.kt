@@ -36,7 +36,7 @@ class RecipeFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
 
         viewBinding = RecipeFragmentBinding.inflate(inflater, container, false)
         recipe = arguments?.getSerializable("recipeItem") as Recipe

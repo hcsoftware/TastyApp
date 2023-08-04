@@ -5,6 +5,8 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.EditorInfo
+import android.widget.TextView.OnEditorActionListener
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -15,31 +17,25 @@ import com.xr6sfoftware.tastyapp.R
 import com.xr6sfoftware.tastyapp.databinding.SearchFragmentBinding
 import com.xr6sfoftware.tastyapp.model.Recipe
 import com.xr6sfoftware.tastyapp.ui.main.adapters.RecipeListAdapter
-import com.xr6sfoftware.tastyapp.ui.main.adapters.RecipeListAdapterClickListener
 import com.xr6sfoftware.tastyapp.utils.hideKeyboard
 import com.xr6sfoftware.tastyapp.utils.validateUserInput
 import com.xr6sfoftware.tastyapp.viewmodels.SearchViewModel
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.Job
-import kotlinx.coroutines.launch
+
 
 /**
 @author Hernán Carrera
 @version 1.0
-This Fragment list recipes from a search term.
+This Fragment searchs and list recipes given a term.
  */
 
 @AndroidEntryPoint
-class SearchFragment : Fragment(), RecipeListAdapterClickListener {
+class SearchFragment : Fragment() {
 
     private val viewModel: SearchViewModel by viewModels()
     private lateinit var viewBinding: SearchFragmentBinding
     private lateinit var recyclerView: RecyclerView
-    private val recipeListAdapter: RecipeListAdapter by lazy {
-        RecipeListAdapter(this, requireContext())
-    }
+    private lateinit var recipeListAdapter: RecipeListAdapter
 
     companion object {
         fun newInstance() = SearchFragment()
@@ -52,6 +48,12 @@ class SearchFragment : Fragment(), RecipeListAdapterClickListener {
         viewBinding = SearchFragmentBinding.inflate(inflater, container, false)
 
         recyclerView = viewBinding.searchFragmentRecyclerView
+        recipeListAdapter = RecipeListAdapter(
+            { recipe ->
+                onClick(recipe)
+            },
+            requireContext()
+        )
         recyclerView.apply {
             layoutManager = GridLayoutManager(context, 1)
             adapter = recipeListAdapter
@@ -62,11 +64,6 @@ class SearchFragment : Fragment(), RecipeListAdapterClickListener {
         setClickListeners()
         setObservers()
         return viewBinding.root
-    }
-
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-
     }
 
     private fun setObservers() {
@@ -110,17 +107,28 @@ class SearchFragment : Fragment(), RecipeListAdapterClickListener {
 
     private fun setClickListeners() {
 
-
+        viewBinding.searchFragmentInputText.imeOptions = EditorInfo.IME_ACTION_GO
+        viewBinding.searchFragmentInputText.setOnEditorActionListener(OnEditorActionListener { v, actionId, event ->
+            if (actionId == EditorInfo.IME_ACTION_GO) {
+                validateAndSearchRecipes()
+                true
+            } else false
+        })
         viewBinding.searchFragmentSearchButton.setOnClickListener {
-            hideKeyboard()
-            if (viewBinding.searchFragmentInputText.validateUserInput()) {
-                viewModel.getRecipes(
-                    viewBinding.searchFragmentInputText.text.toString(),
-                    getCookTime()
-                )
-            } else {
-                showIncorrectInputMsg(resources.getString(R.string.search_frag_error_msg_wrong))
-            }
+            validateAndSearchRecipes()
+        }
+
+    }
+
+    private fun validateAndSearchRecipes() {
+        hideKeyboard()
+        if (viewBinding.searchFragmentInputText.validateUserInput()) {
+            viewModel.getRecipes(
+                viewBinding.searchFragmentInputText.text.toString(),
+                getCookTime()
+            )
+        } else {
+            showIncorrectInputMsg(resources.getString(R.string.search_frag_error_msg_wrong))
         }
     }
 
@@ -154,9 +162,10 @@ class SearchFragment : Fragment(), RecipeListAdapterClickListener {
         return ""
     }
 
-    override fun onClick(recipe: Recipe) {
+    private fun onClick(recipe: Recipe) {
         val bundle: Bundle = bundleOf("recipeItem" to recipe)
         findNavController().navigate(R.id.recipeFragment, bundle)
     }
+
 
 }

@@ -5,13 +5,16 @@ import com.xr6sfoftware.tastyapp.repositories.RecipesRepositoryImpl
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
-import dagger.hilt.android.components.ActivityComponent
+import dagger.hilt.components.SingletonComponent
 
+/**
+ This class provides the repository instance via Hilt Injection.
+ */
 @Module
-@InstallIn(ActivityComponent::class)
+@InstallIn(SingletonComponent::class)
 abstract class RepositoryModule {
+
     @Binds
-    abstract fun recipesRepository(repository: RecipesRepositoryImpl): RecipesRepository
+    abstract fun bindRecipesRepository(recipesRepositoryImpl: RecipesRepositoryImpl): RecipesRepository
+
 }
-
-

@@ -14,6 +14,15 @@
         <!-- Customize your theme here. -->
     </style>
 
+
+    <!-- Splash Screen theme -->
+    <style name="Theme.Transparent" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowFullscreen">true</item>
+    </style>
+
+
+
+
     <!-- Recipe List Item Styles -->
     <style name="recipe_list_image">
         <item name="android:layout_width">match_parent</item>

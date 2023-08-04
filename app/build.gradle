@@ -39,6 +39,12 @@ android {
 
 dependencies {
 
+    def splahScreenVersion = "1.0.0"
+    //val splahScreenVersion = "1.0.0"
+    // Use: def instead of val if you are not using Kotlin Gradle(.kts)
+
+    implementation("androidx.core:core-splashscreen:$splashScreenVersion")
+
     //Network implements
     implementation "com.android.volley:volley:$volley_version"
     implementation "com.google.code.gson:gson:$gson_version"
@@ -46,9 +52,14 @@ dependencies {
     implementation "com.google.dagger:hilt-android:$hilt_version"
     kapt "com.google.dagger:hilt-android-compiler:$hilt_version"
     kapt "com.google.dagger:hilt-android:$hilt_version"
+    //Dialog Library
+    implementation 'com.orhanobut:dialogplus:1.11@aar'
+
+
     //Image loading
     implementation "io.coil-kt:coil:$coil_version"
     //Android
+
     implementation 'androidx.navigation:navigation-fragment-ktx:2.5.3'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.5.1'
