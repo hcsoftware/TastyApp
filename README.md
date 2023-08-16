@@ -18,6 +18,7 @@ Implements:<br></p>
 <li>DiffUtil in RecyclerView</li>
 <li>Unit testing for user input validation method.</li>
 <li>Desing patterns like repository, adapter, singleton</li>
+ <li>Splash Animations for app start and transition between activies.</li>
 </ul>
 <p> In this project you migth find UI implements like:<p>
 <ul>
@@ -37,10 +38,10 @@ App layers and classes: <br>
             * Holds the main activity and fragments.<br>
  -> Repositories -> RecipeRepository  * Handles the requests from the viewModel and connects with the ApiService.<br>
  ->  ViewModel -> * The viewModels handles the data and provides the views.
-                
-  Some ScreenShots: 
   <div>
-    <img src="https://user-images.githubusercontent.com/100162759/217354499-6fe59122-d3b6-459a-9b51-9f8b793e7e6f.png" width=30% height=30%>
+   <img src="https://github-production-user-asset-6210df.s3.amazonaws.com/100162759/261141456-94864850-1fef-4072-b809-416fd4c0f4d1.png" width=30% height=30%>
+   <img src="https://github-production-user-asset-6210df.s3.amazonaws.com/100162759/261141863-b3be0702-ac98-43ee-8edd-e3d3dfa1c89a.png" width=30% height=30%>
+   <img src="https://user-images.githubusercontent.com/100162759/217354499-6fe59122-d3b6-459a-9b51-9f8b793e7e6f.png" width=30% height=30%>
     <img src="https://user-images.githubusercontent.com/100162759/217354506-4c31b25d-31a8-4c86-8464-23e164a36f3c.png" width=30% height=30%>
 </div>
 
