@@ -7,7 +7,7 @@ import com.xr6sfoftware.tastyapp.repositories.model.RepositoryStatus
 import javax.inject.Inject
 
 /**
- * Implements and defines the Repository Funs. Interacts with Api Service.
+ * Implements the Repository Functions. Interacts with Api Service.
  */
 class RecipesRepositoryImpl @Inject constructor(
    private val apiService: ApiService

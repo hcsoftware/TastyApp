@@ -18,6 +18,7 @@
     <!-- Splash Screen theme -->
     <style name="Theme.Transparent" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="android:windowFullscreen">true</item>
+        <item name="android:windowBackground">@color/orange_medium</item>
     </style>
 
 

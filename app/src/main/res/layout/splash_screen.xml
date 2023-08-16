@@ -3,48 +3,60 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="#EC407A">
+    android:background="@color/orange_medium">
+
+    <ImageView
+        android:id="@+id/splash_screen_image_food_0"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginLeft="-70dp"
+        android:src="@drawable/ic_food_0"
+        android:layout_marginBottom="7dp"
+        app:layout_constraintBottom_toTopOf="@id/splash_screen_image"
+        app:layout_constraintLeft_toLeftOf="parent"/>
+
+    <ImageView
+        android:id="@+id/splash_screen_image_food_1"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:src="@drawable/ic_food_1"
+        android:layout_marginBottom="7dp"
+        android:layout_marginRight="-70dp"
+        app:layout_constraintBottom_toTopOf="@id/splash_screen_image_food_0"
+        app:layout_constraintRight_toRightOf="parent"/>
 
 
-    <TextView
-        android:id="@+id/text1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingLeft="10dp"
-        android:paddingTop="5dp"
+    <ImageView
+        android:id="@+id/splash_screen_image_food_2"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginBottom="7dp"
+        android:layout_marginLeft="-70dp"
+        android:src="@drawable/ic_food_2"
+        app:layout_constraintBottom_toTopOf="@id/splash_screen_image_food_1"
+        app:layout_constraintLeft_toLeftOf="parent"/>
+
+    <ImageView
+        android:id="@+id/splash_screen_image"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:src="@drawable/ic_launcher_foreground"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
-        android:text="Tasty"
-        android:textSize="17sp"
-        android:textStyle="bold" />
-
+        app:layout_constraintRight_toRightOf="parent"/>
 
     <TextView
-        android:id="@+id/text2"
-        app:fontFamily="@font/baloo_bhai_2_semibold"
+        android:id="@+id/splash_screen_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        android:paddingLeft="10dp"
-        android:paddingTop="5dp"
-        android:text="Recipes"
-        android:textSize="17sp"
-        android:textStyle="bold" />
-
-
-    <TextView
-        android:id="@+id/text3"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/splash_screen_image"
         app:layout_constraintLeft_toLeftOf="parent"
-        android:paddingLeft="10dp"
-        android:paddingTop="5dp"
-        android:text="For You"
-        android:textSize="17sp"
-        android:textStyle="bold" />
-
+        app:layout_constraintRight_toRightOf="parent"
+        android:text="@string/app_name"
+        android:textSize="25sp"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:fontFamily="@font/baloo_bhai_2_semibold"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

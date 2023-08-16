@@ -39,7 +39,7 @@ android {
 
 dependencies {
 
-    def splahScreenVersion = "1.0.0"
+    def splashScreenVersion = "1.0.0"
     //val splahScreenVersion = "1.0.0"
     // Use: def instead of val if you are not using Kotlin Gradle(.kts)
 

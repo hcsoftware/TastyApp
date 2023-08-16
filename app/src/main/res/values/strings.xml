@@ -1,13 +1,11 @@
 <resources>
-    <string name="app_name">TastyApp</string>
+    <string name="app_name">Tasty Recipes</string>
 
     <!-- Quit Dialog Strings -->
     <string name="quit_dialog_header_title">Tasty App!</string>
     <string name="quit_dialog_content_title">Are you sure you want to leave our kitchen?</string>
     <string name="quit_dialog_content_btn_yes">YES</string>
     <string name="quit_dialog_content_btn_no">NO</string>
-
-
 
     <!-- Recipe List Adapter Strings -->
     <string name="recipe_list_calories">Calories : </string>
@@ -45,6 +43,7 @@
     <string name="search_frag_radio_opt_1">Under 30\'</string>
     <string name="search_frag_radio_opt_2">Under 45\'</string>
     <string name="search_frag_radio_opt_3">No time.</string>
+    <string name="search_fragment_empty_text">Search for any Food / Ingredient</string>
 
 
 </resources>

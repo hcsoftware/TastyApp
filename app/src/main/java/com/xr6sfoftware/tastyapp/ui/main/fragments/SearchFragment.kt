@@ -81,6 +81,8 @@ class SearchFragment : Fragment() {
                 }
                 is SearchViewModel.UiSearchFragmentState.Recipes -> {
                     viewBinding.searchFragmentLoading.visibility = View.GONE
+                    viewBinding.searchFragmentEmptyImg.visibility = View.GONE
+                    viewBinding.searchFragmentEmptyTxt.visibility = View.GONE
                     if (it.recipeList.count > 0) {
                         recipeListAdapter.setData(it.recipeList.results)
                     } else {
