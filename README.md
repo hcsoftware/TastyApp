@@ -12,6 +12,7 @@ Use cases:
 Implements:<br></p>
 <ul>
 <li>Transition Manager for Fragments</li>
+<li>Retrofit library for API Requests.</li>
 <li>Gson library to handle JSON objects</li>
 <li>Coil library to load Images. This library uses coroutines</li>
 <li>Dagger Hilt for dependency injection</li>
