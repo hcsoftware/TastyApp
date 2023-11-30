@@ -2,7 +2,7 @@ package com.xr6sfoftware.tastyapp.repositories
 
 import com.xr6sfoftware.tastyapp.model.RecipeDetail
 import com.xr6sfoftware.tastyapp.model.RecipeList
-import com.xr6sfoftware.tastyapp.network.ApiService
+import com.xr6sfoftware.tastyapp.network.ApiServiceRetrofit
 import com.xr6sfoftware.tastyapp.repositories.model.RepositoryStatus
 import javax.inject.Inject
 
@@ -10,7 +10,7 @@ import javax.inject.Inject
  * Implements the Repository Functions. Interacts with Api Service.
  */
 class RecipesRepositoryImpl @Inject constructor(
-   private val apiService: ApiService
+   private val apiService: ApiServiceRetrofit
 ) : RecipesRepository {
 
 

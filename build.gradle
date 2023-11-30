@@ -10,6 +10,7 @@ buildscript {
         volley_version = "1.2.1"
         gson_version = "2.10.1"
         coil_version = "2.2.2"
+        retrofit_version = "2.9.0"
 
     }
     dependencies {

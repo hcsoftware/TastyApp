@@ -9,4 +9,7 @@ object NetworkConstants {
     const val URL_RECIPE_LIST = "recipes/list?from=0&size=30"
     const val URL_RECIPE_DETAIL = "recipes/get-more-info?id="
 
+    const val RECIPES_URL = "recipes/list?from=0&size=30"
+    const val RECIPE_DETAIL_URL = "recipes/get-more-info"
+
 }
